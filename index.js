@@ -11,3 +11,17 @@ function getComputerChoice() {
 }
 
 console.log(getComputerChoice(`Computer Choice is ${getComputerChoice}`));
+
+let input = window.prompt("Tentukan Pilihanmu !");
+
+function getHumanChoice() {
+  if (input === "rock") {
+    return "rock";
+  } else if (input === "paper") {
+    return "paper";
+  } else if (input === "scissor") {
+    return "scissor";
+  }
+}
+
+console.log(getHumanChoice(`Your Choice is ${input}`));
