@@ -1,9 +1,21 @@
-// Make a rock paper scissor game
-// Make Computer choice that will choose between rock paper and scissor
-// Make human choice using prompt
-// Create 2 variable that will keep track the player score
-// Make playRound function to make the game rules of rock paper scissor game
-// Make playGame function to make the game length that is 5 round and make If statement that declares the winner
+// Wait for DOM to be fully loaded
+document.addEventListener("DOMContentLoaded", function () {
+  // Initialize score display
+  if (humanScoreDisplay) humanScoreDisplay.textContent = "0";
+  if (computerScoreDisplay) computerScoreDisplay.textContent = "0";
+  if (textDisplay)
+    textDisplay.textContent = "Choose your move to start playing!";
+});
+
+const textDisplay = document.querySelector(".text_display");
+const humanDisplay = document.querySelector(".humanDisplay");
+const computerDisplay = document.querySelector(".computerDisplay");
+const humanScoreDisplay = document.querySelector(".humanScore");
+const computerScoreDisplay = document.querySelector(".computerScore");
+
+let humanScore = 0;
+let computerScore = 0;
+let gameEnded = false;
 
 function getComputerChoice() {
   let random = Math.random();
@@ -17,48 +29,105 @@ function getComputerChoice() {
   }
 }
 
-// function getHumanChoice() {
-//   let input = prompt("Choose Wisely my man.. (Rock, Paper, Scissor)");
-//   return input.toLowerCase();
-// }
-
-function playGame() {
-  let humanScore = 0;
-  let computerScore = 0;
-
-  function playRound(humanChoice, computerChoice) {
-    if (humanChoice === computerChoice) {
-      console.log(`Its a tie!!!, You both using ${humanChoice}`);
-    } else if (
-      (humanChoice === "rock" && computerChoice === "scissor") ||
-      (humanChoice === "paper" && computerChoice === "rock") ||
-      (humanChoice === "scissor" && computerChoice === "paper")
-    ) {
-      console.log(`You Win!!!!!, ${humanChoice} win against ${computerChoice}`);
-      humanScore++;
-    } else {
-      console.log(`You lose!!, ${computerChoice} win against ${humanChoice} `);
-      computerScore++;
-    }
+function playRound(humanChoice) {
+  // Cek apakah game sudah berakhir
+  if (gameEnded) {
+    return;
   }
 
-  for (let i = 1; i <= 5; i++) {
-    const humanChoice = getHumanChoice();
-    const computerChoice = getComputerChoice();
-    playRound(humanChoice, computerChoice);
-  }
+  const computerChoice = getComputerChoice();
+  let resultMessage = "";
 
-  console.log(
-    `Your Final Score is: You:${humanScore}, Computer:${computerScore}`
-  );
-
-  if (humanScore > computerScore) {
-    console.log("Congrats, You win!!");
-  } else if (computerScore > humanScore) {
-    console.log("You Are Cooked mate !!");
+  if (humanChoice === computerChoice) {
+    resultMessage = `Its a tie!!!, You both using ${humanChoice}`;
+  } else if (
+    (humanChoice === "rock" && computerChoice === "scissor") ||
+    (humanChoice === "paper" && computerChoice === "rock") ||
+    (humanChoice === "scissor" && computerChoice === "paper")
+  ) {
+    resultMessage = `You Win!!!!!, ${humanChoice} win against ${computerChoice}`;
+    humanScore++;
   } else {
-    console.log("its a draw mate, Cheers");
+    resultMessage = `You lose!!, ${computerChoice} win against ${humanChoice}`;
+    computerScore++;
+  }
+
+  // Update displays
+  humanDisplay.textContent = `Human choose ${humanChoice}`;
+  computerDisplay.textContent = `Computer choose ${computerChoice}`;
+  textDisplay.textContent = `Round Result: ${resultMessage}`;
+
+  // Update scores
+  humanScoreDisplay.textContent = humanScore;
+  computerScoreDisplay.textContent = computerScore;
+
+  // Check for winner
+  if (humanScore === 5) {
+    textDisplay.textContent = "🎉 Congratulations! You are the Champion! 🎉";
+    gameEnded = true;
+    showNewGameButton();
+  } else if (computerScore === 5) {
+    textDisplay.textContent = "💻 Computer Wins! Better luck next time! 💻";
+    gameEnded = true;
+    showNewGameButton();
   }
 }
 
-playGame();
+function showNewGameButton() {
+  const gameHistory = document.querySelector(".game_history");
+  if (gameHistory) {
+    gameHistory.innerHTML = `
+      <button onclick="startNewGame()" style="
+        background: #4CAF50;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 18px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background 0.3s ease;
+      " onmouseover="this.style.background='#45a049'" onmouseout="this.style.background='#4CAF50'">
+        🔄 Start New Game
+      </button>
+    `;
+  } else {
+    // Jika game_history tidak ditemukan, tambahkan tombol ke text_display
+    textDisplay.innerHTML += `
+      <br><br>
+      <button onclick="startNewGame()" style="
+        background: #4CAF50;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 18px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background 0.3s ease;
+      " onmouseover="this.style.background='#45a049'" onmouseout="this.style.background='#4CAF50'">
+        🔄 Start New Game
+      </button>
+    `;
+  }
+}
+
+function startNewGame() {
+  // Reset semua variabel
+  humanScore = 0;
+  computerScore = 0;
+  gameEnded = false;
+
+  // Reset tampilan
+  humanScoreDisplay.textContent = "0";
+  computerScoreDisplay.textContent = "0";
+  humanDisplay.textContent = "";
+  computerDisplay.textContent = "";
+  textDisplay.innerHTML = "Choose your move to start playing!";
+
+  // Hapus tombol new game
+  const gameHistory = document.querySelector(".game_history");
+  if (gameHistory) {
+    gameHistory.innerHTML = "";
+  }
+}

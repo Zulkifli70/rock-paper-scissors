@@ -35,6 +35,10 @@ body {
   margin-bottom: 2em;
 }
 
+.round_display span {
+  display: block;
+}
+
 .human_section,
 .comp_section {
   border-radius: 10px;

@@ -19,22 +19,31 @@
       <div class="card">
         <div class="round_display">
           <div class="human_section">
-            <div class="human_score">Human Score</div>
-            <span id="humanScoreDisplay">0</span>
+            <div class="human_label">Human Score</div>
+            <span class="humanScore"></span>
+            <span class="humanDisplay"></span>
           </div>
           <div class="versus_separation">vs</div>
           <div class="comp_section">
-            <div class="computer_score">Computer Score</div>
-            <span id="computerScoreDisplay">0</span>
+            <div class="computer_label">Computer Score</div>
+            <span class="computerScore"></span>
+            <span class="computerDisplay"></span>
           </div>
         </div>
-        <div class="text_display">text display</div>
+        <div class="text_display"></div>
         <div class="human_choice">
           <div>Choose</div>
-          <button><img src="img/rock.png" alt="rock" /></button>
-          <button><img src="img/paper.png" alt="paper" /></button>
-          <button><img src="img/scissors.png" alt="scissors" /></button>
+          <button onclick="playRound('rock')">
+            <img src="img/rock.png" alt="rock" />
+          </button>
+          <button onclick="playRound('paper')">
+            <img src="img/paper.png" alt="paper" />
+          </button>
+          <button onclick="playRound('scissor')">
+            <img src="img/scissors.png" alt="scissor" />
+          </button>
         </div>
+        <div class="game_result"></div>
       </div>
     </main>
     <script src="index.js"></script>
