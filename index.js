@@ -17,10 +17,10 @@ function getComputerChoice() {
   }
 }
 
-function getHumanChoice() {
-  let input = prompt("Choose Wisely my man.. (Rock, Paper, Scissor)");
-  return input.toLowerCase();
-}
+// function getHumanChoice() {
+//   let input = prompt("Choose Wisely my man.. (Rock, Paper, Scissor)");
+//   return input.toLowerCase();
+// }
 
 function playGame() {
   let humanScore = 0;

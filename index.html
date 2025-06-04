@@ -3,9 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gunting Batu Kertas</title>
+    <title>Rock Paper Scissors Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
+    <main class="main-content">
+      <h1 class="game-title">Rock Paper Scissors Game</h1>
+      <h3 class="game-desc">First to win 5 round is the champion!</h3>
+      <div class="card">
+        <div class="round_display">
+          <div class="human_section">
+            <div class="human_score">Human Score</div>
+            <span id="humanScoreDisplay">0</span>
+          </div>
+          <div class="versus_separation">vs</div>
+          <div class="comp_section">
+            <div class="computer_score">Computer Score</div>
+            <span id="computerScoreDisplay">0</span>
+          </div>
+        </div>
+        <div class="text_display">text display</div>
+        <div class="human_choice">
+          <div>Choose</div>
+          <button><img src="img/rock.png" alt="rock" /></button>
+          <button><img src="img/paper.png" alt="paper" /></button>
+          <button><img src="img/scissors.png" alt="scissors" /></button>
+        </div>
+      </div>
+    </main>
     <script src="index.js"></script>
   </body>
 </html>

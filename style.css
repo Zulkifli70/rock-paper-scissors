@@ -1,0 +1,61 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Jersey 10", sans-serif;
+  font-size: 1.5rem;
+  background-color: rgb(79, 43, 136);
+  color: white;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+}
+
+.card {
+  padding: 1em;
+  border: 1px solid;
+  border-radius: 20px;
+  width: 80%;
+  max-width: 1120px;
+}
+
+.round_display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.human_section,
+.comp_section {
+  border-radius: 10px;
+  flex-grow: 2;
+  flex-basis: 400px;
+  border: 1px solid;
+}
+
+.versus_separation {
+  flex-grow: 1;
+}
+
+.text_display {
+  margin-bottom: 1em;
+}
+
+.human_choice button {
+  border-radius: 100px;
+}
+
+.human_choice button:hover {
+  background-color: rgb(99, 48, 114);
+  opacity: 0.8;
+}
