@@ -1,12 +1,3 @@
-// Wait for DOM to be fully loaded
-document.addEventListener("DOMContentLoaded", function () {
-  // Initialize score display
-  if (humanScoreDisplay) humanScoreDisplay.textContent = "0";
-  if (computerScoreDisplay) computerScoreDisplay.textContent = "0";
-  if (textDisplay)
-    textDisplay.textContent = "Choose your move to start playing!";
-});
-
 const textDisplay = document.querySelector(".text_display");
 const humanDisplay = document.querySelector(".humanDisplay");
 const computerDisplay = document.querySelector(".computerDisplay");
@@ -16,6 +7,10 @@ const computerScoreDisplay = document.querySelector(".computerScore");
 let humanScore = 0;
 let computerScore = 0;
 let gameEnded = false;
+
+if (humanScoreDisplay) humanScoreDisplay.textContent = "0";
+if (computerScoreDisplay) computerScoreDisplay.textContent = "0";
+if (textDisplay) textDisplay.textContent = "Choose your move to start playing!";
 
 function getComputerChoice() {
   let random = Math.random();
